@@ -41,7 +41,7 @@ namespace LELToolCore.Controllers
 
 		public IActionResult DoAnithing() {
 			
-				Symbol sym = new Symbol() { Id = 21};
+				Symbol sym = new Symbol();
 
 				Context.Symbols.Add(sym);
 				Context.SaveChanges();

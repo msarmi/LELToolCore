@@ -11,14 +11,18 @@ namespace LELToolCore.Models
 	{
 		public long Id { get; set; }
 		public string Content { get; set; }
-		public ICollection<Symbol> Symbols { get; set; }
-		public SymbolAttribute Attribute { get; set; }
-				
-		public SocialNWManager SocialNWManager { get; set; }
+		public virtual ICollection<ExpressionSymbol> ContentSymbols { get; set; }
 
+		public virtual ICollection<NotionExpression> NotionSymbols { get; set; }
+		public virtual ICollection<ActionExpression> ActionSymbols { get; set; }
+		//public long UserId { get; set; }
+		[ForeignKey("Id")]
+		public User Author { get; set; }
+		
 		public Expression()
 		{
-			Symbols = new HashSet<Symbol>();			
+			NotionSymbols = new HashSet<NotionExpression>();
+			ActionSymbols = new HashSet<ActionExpression>();
 		}		
 	}
 }

@@ -9,20 +9,25 @@ namespace LELToolCore.Models
 {
     public class Symbol
     {
-		public int Id { get; set; }
+		public long Id { get; set; }
 		public string Name { get; set; }
-		public string Description { get; set; }
+				
+		[ForeignKey("Id")]
 		public User Author { get; set; }
-		public virtual ICollection<Synonym> Synonyms { get; set; }
 
-		public SymbolAttribute Notion { get; set; } 
-		public SymbolAttribute BehaviouralResponse { get; set; }
 		public Category Category { get; set; }
-		
-		public SocialNWManager SocialNWManager { get; set; }
 
+		//public long ProjectId { get; set; }
+		public LELProject LELProject { get; set; }
+
+		public virtual ICollection<Synonym> Synonyms { get; set; }
+		public virtual ICollection<NotionExpression> Notions { get; set; } 
+		public virtual ICollection<ActionExpression> Actions { get; set; }
+				
 		public Symbol() {
 			Synonyms = new HashSet<Synonym>();
+			Notions = new HashSet<NotionExpression>();
+			Actions = new HashSet<ActionExpression>();
 		}
 
 		public Symbol merge(Symbol anotherSymbol)

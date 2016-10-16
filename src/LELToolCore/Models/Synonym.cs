@@ -13,7 +13,7 @@ namespace LELToolCore.Models
 		public string Name { get; set; }
 		public string Description { get; set; }
 
-		public int SymbolId { get; set; }
+		//public int SymbolId { get; set; }
 		public Symbol Symbol { get; set; }
 	}
 }
